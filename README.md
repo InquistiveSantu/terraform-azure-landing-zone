@@ -1,6 +1,5 @@
 # terraform-azure-landing-zone
-Production-Ready Monolithic Azure Landing Zone on Microsoft Azure using Terraform Parent-Child Modules, Azure DevOps CI/CD, Azure Monitor, and Infrastructure as Code (IaC) best practices.
-
+Production-ready Azure Landing Zone built with Terraform reusable modules, Azure DevOps CI/CD, Azure Monitor, and Infrastructure as Code (IaC) best practices.
 
 ## Project Overview
 
@@ -28,4 +27,5 @@ Production-Ready Monolithic Azure Landing Zone on Microsoft Azure using Terrafor
 
 ## Future Improvements
 
-## Interview Questions
+
+
