@@ -7,6 +7,20 @@ variable "RG" {
 
 }
 
+variable "VNET" {
+
+  description = "Craeting One Vnet for LandingZone"
+  type        = string
+
+}
+
+
+variable "address_space" {
+
+  description = "Creating CIDR Range for our all azure resources"
+  type        = list(string)
+}
+
 
 
 
