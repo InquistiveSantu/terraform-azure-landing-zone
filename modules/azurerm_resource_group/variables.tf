@@ -1,8 +1,8 @@
 variable "RG" {
-  
+
 
   description = "Name of the variable resource group"
-  type = string
+  type        = string
 
 
 }
@@ -11,12 +11,12 @@ variable "RG" {
 
 
 variable "location" {
-  
+
 
   description = "This is my Azure region Where all resources are created"
-  type = string
+  type        = string
 
-  
+
 }
 
 
