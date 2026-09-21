@@ -2,7 +2,7 @@ terraform {
   backend "azurerm" {
 
     resource_group_name  = "rg-dev-Landing-Zone-project-1"
-    storage_account_name = "state0files0stg0dev1"
+    storage_account_name = "state0files0stg0dev123"
     container_name       = "devtfstate"
     key                  = "dev.tfstate"
   }
