@@ -42,28 +42,28 @@ variable "tags" {
 
 
 variable "SUBNETS" {
-  
-description = "map of subnet configurations"
-type = map(object({
-  subnet_name = string
-  resource_group_name = string
-  virtual_network_name = string
-  address_prefixes = list(string)
-}))
+
+  description = "map of subnet configurations"
+  type = map(object({
+    subnet_name          = string
+    resource_group_name  = string
+    virtual_network_name = string
+    address_prefixes     = list(string)
+  }))
 
 
 }
 
 
 variable "NICCARDS" {
-  
+
 
   description = "Created nic card for frontend,backend and database VM"
   type = map(object({
-     nic_name  = string
-     location = string
-     resource_group_name = string
-     subnet_id = string
+    nic_name            = string
+    location            = string
+    resource_group_name = string
+    subnet_id           = string
 
   }))
 }
@@ -72,13 +72,13 @@ variable "NICCARDS" {
 
 variable "dev_pip" {
 
-    description = "dev_pip"
+  description = "dev_pip"
   type = map(object({
-    name = string
-    location = string
+    name                = string
+    location            = string
     resource_group_name = string
-    allocation_method = string
+    allocation_method   = string
   }))
 
-  
+
 }
