@@ -141,6 +141,13 @@ module "vms" {
 }
 
 
+module "postgressql" {
+  depends_on         =[module.resource_group,module.subnet]
+  source             = "../../modules/azurerm_postgres_flexible_server"
+  postgresql_servers = var.postgresql_servers
+}
+
+
 
 
 

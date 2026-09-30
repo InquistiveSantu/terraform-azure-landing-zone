@@ -127,4 +127,4 @@ variable "NSGS" {
 
 
 
-
+variable "postgresql_servers" {}
