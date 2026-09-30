@@ -80,6 +80,36 @@ module "nic_card" {
 
 
 
+
+
+
+
+
+
+
+module "nsg" {
+  depends_on = [module.resource_group]
+
+  source = "../../modules/azurerm_network_security_group"
+
+  NSGS = var.NSGS
+
+ NIC_NSG_ASSOCIATIONS = {
+  frontend = {
+    network_interface_id = module.nic_card.nic_card_dev["frontend"]
+    nsg_key              = "frontend"
+  }
+
+  backend = {
+    network_interface_id = module.nic_card.nic_card_dev["backend"]
+    nsg_key              = "backend"
+  }
+}
+}
+
+
+
+
 module "vms" {
   depends_on = [module.subnet, module.public_ip_address_id]
   source     = "../../modules/azurerm_linux_virtual_machine"
@@ -109,6 +139,11 @@ module "vms" {
     }
   }
 }
+
+
+
+
+
 
 
 

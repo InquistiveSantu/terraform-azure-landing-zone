@@ -12,3 +12,13 @@ variable "vms" {
     network_interface_id = string
   }))
 }
+
+
+
+
+
+
+
+
+
+
