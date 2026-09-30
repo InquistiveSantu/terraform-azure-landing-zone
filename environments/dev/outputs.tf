@@ -20,10 +20,18 @@ output "azurerm_public_ip" {
 
 
 
-# output "nic_card" {
+output "nic_card" {
 
-#     description = "nic id display"
-#     value = module.nic_card.nic_card_dev
+  description = "nic id display"
+  value       = module.nic_card.nic_card_dev
 
-# }
+}
+
+
+output "vm" {
+
+  description = "Linux virtual machine IDs"
+
+  value = module.vms.vm_ids
+}
 

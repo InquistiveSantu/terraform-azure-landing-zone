@@ -50,6 +50,9 @@ module "nic_card" {
       location            = var.NICCARDS["frontend"].location
       resource_group_name = var.NICCARDS["frontend"].resource_group_name
       subnet_id           = module.subnet.subnetblock_id["subnet2"]
+      public_ip_id = module.public_ip_address_id.azurerm_public_ip[
+        var.NICCARDS["frontend"].public_ip_key
+      ]
 
 
 
@@ -63,17 +66,52 @@ module "nic_card" {
       location            = var.NICCARDS["backend"].location
       resource_group_name = var.NICCARDS["backend"].resource_group_name
       subnet_id           = module.subnet.subnetblock_id["subnet3"]
-
-
-
+      public_ip_id = module.public_ip_address_id.azurerm_public_ip[
+        var.NICCARDS["backend"].public_ip_key
+      ]
     }
-
-
   }
 
 
 
 }
+
+
+
+
+
+module "vms" {
+  depends_on = [module.subnet, module.public_ip_address_id]
+  source     = "../../modules/azurerm_linux_virtual_machine"
+
+  vms = {
+
+    vm1 = {
+      vm_name             = var.vms["vm1"].vm_name
+      resource_group_name = var.vms["vm1"].resource_group_name
+      location            = var.vms["vm1"].location
+      vm_size             = var.vms["vm1"].vm_size
+      admin_username      = var.vms["vm1"].admin_username
+      admin_password      = var.vms["vm1"].admin_password
+
+      network_interface_id = module.nic_card.nic_card_dev["frontend"]
+    }
+
+    vm2 = {
+      vm_name             = var.vms["vm2"].vm_name
+      resource_group_name = var.vms["vm2"].resource_group_name
+      location            = var.vms["vm2"].location
+      vm_size             = var.vms["vm2"].vm_size
+      admin_username      = var.vms["vm2"].admin_username
+      admin_password      = var.vms["vm2"].admin_password
+
+      network_interface_id = module.nic_card.nic_card_dev["backend"]
+    }
+  }
+}
+
+
+
 
 
 
