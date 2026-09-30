@@ -9,6 +9,12 @@ resource "azurerm_network_interface" "dev-nic" {
     name                          = "internal"
     subnet_id                     = each.value.subnet_id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = each.value.public_ip_id
   }
-
 }
+
+
+
+
+
+
